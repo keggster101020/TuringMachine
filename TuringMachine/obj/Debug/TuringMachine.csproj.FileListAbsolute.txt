@@ -1,0 +1,13 @@
+C:\Users\Keegan\AppData\Local\Temporary Projects\TuringMachine\bin\Debug\TuringMachine.exe.config
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.exe.config
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.exe
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\TuringMachine.pdb
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\MetroFramework.Design.dll
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\MetroFramework.dll
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.csprojResolveAssemblyReference.cache
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.Form1.resources
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.Properties.Resources.resources
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.csproj.GenerateResource.Cache
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.exe
+C:\Users\Keegan\Documents\Visual Studio 2012\Projects\TuringMachine\TuringMachine\obj\Debug\TuringMachine.pdb
