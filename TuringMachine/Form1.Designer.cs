@@ -145,6 +145,7 @@
             this.metroTextBox25 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.TextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.clearForm = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // TMSelect
@@ -153,7 +154,8 @@
             this.TMSelect.ItemHeight = 23;
             this.TMSelect.Items.AddRange(new object[] {
             "W#X",
-            "W#W"});
+            "W%2",
+            "2^x"});
             this.TMSelect.Location = new System.Drawing.Point(23, 72);
             this.TMSelect.Name = "TMSelect";
             this.TMSelect.Size = new System.Drawing.Size(121, 29);
@@ -978,11 +980,22 @@
             this.metroLabel1.TabIndex = 4;
             this.metroLabel1.Text = ".";
             // 
+            // clearForm
+            // 
+            this.clearForm.Location = new System.Drawing.Point(232, 72);
+            this.clearForm.Name = "clearForm";
+            this.clearForm.Size = new System.Drawing.Size(74, 28);
+            this.clearForm.TabIndex = 5;
+            this.clearForm.Text = "Clear";
+            this.clearForm.UseSelectable = true;
+            this.clearForm.Click += new System.EventHandler(this.clearForm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 418);
+            this.Controls.Add(this.clearForm);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.metroTextBox25);
@@ -1227,6 +1240,7 @@
         private System.Windows.Forms.TextBox metroTextBox25;
         private System.Windows.Forms.TextBox label25;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton clearForm;
 
     }
 }

@@ -86,6 +86,7 @@ namespace TuringMachine
 
         private void run_Click(object sender, EventArgs e)
         {
+            clearLabels();
             bool flag = false; //represents if the language matched or not
             if (inputLength() == 0)
             {
@@ -96,64 +97,159 @@ namespace TuringMachine
                 //this is for problem 1
                 if (TMSelect.Text.Equals("W#X", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    //metroLabel1.Text = inputLength().ToString();
-                    int i = 0;
-                    for (; i < inputLength(); i++)
+                    //check the case of only a '#' on the tape
+                    if (inputBoxes[0].Text.Equals("#", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        if (inputBoxes[i].Text.Equals("#", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            labelBoxes[i].Text = "Q" + i;
-                            break; // found out where # is located
-                        }
-                    }
-                    int count = 1;
-                    //check is one side of the # > or < the other side, if so reject
-                    if (i < ((inputLength() - 1) - i) || i > ((inputLength() - 1) - i))
-                    {
-                        MetroMessageBox.Show(this, "Reject", "Rejected input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        flag = true;
                     }
                     else
                     {
-                        for (int j = i; j < inputLength() - 1; j++) //notice j is where # is
+                        int i = 0;
+                        for (; i < inputLength(); i++)
                         {
-                            String hold = inputBoxes[i + count].Text;
-                            labelBoxes[i + count].Text = "Q" + j;
-                            labelBoxes[i - count].Text = "Q" + (j);
-                            if ((hold.Equals(inputBoxes[i - count].Text, StringComparison.InvariantCultureIgnoreCase)))
+                            if (inputBoxes[i].Text.Equals("#", StringComparison.InvariantCultureIgnoreCase))
                             {
-
-                                flag = true;
-                                count++;
+                                labelBoxes[i].Text = "Q" + i;
+                                break; // found out where # is located
                             }
-                            else
-                            {
-                                flag = false;
-                                break;
-                            }
-
                         }
-                        if (flag)
-                            MetroMessageBox.Show(this, "Correct", "Accepted input", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        else
+                        int count = 1;
+                        //check is one side of the # > or < the other side, if so reject
+                        if (i < ((inputLength() - 1) - i) || i > ((inputLength() - 1) - i))
+                        {
                             MetroMessageBox.Show(this, "Reject", "Rejected input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            for (int j = i; j < inputLength() - 1; j++) //notice j is where # is
+                            {
+                                String hold = inputBoxes[i + count].Text;
+                                labelBoxes[i + count].Text = "Q" + j;
+                                labelBoxes[i - count].Text = "Q" + (j);
+                                if ((hold.Equals(inputBoxes[i - count].Text, StringComparison.InvariantCultureIgnoreCase)))
+                                {
+
+                                    flag = true;
+                                    count++;
+                                }
+                                else
+                                {
+                                    flag = false;
+                                    break;
+                                }
+
+                            }
+                        }
                     }
+                    if (flag)
+                        MetroMessageBox.Show(this, "Correct", "Accepted input", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    else
+                        MetroMessageBox.Show(this, "Reject", "Rejected input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
-                //TODO another 2 problems inside elseif's 
+                //TODO checking if W%2==0
+                else if (TMSelect.Text.Equals("W%2", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    int hold = inputLength(); // cut down on repeated inputlen calls
+                    metroLabel1.Text = hold.ToString();
+                    //note: i += 2 because we are checking a box and the box next to it, we don't want to double check the same box
+                    for (int i = 0; i < hold; i += 2)
+                    {
+                        metroLabel1.Text = i.ToString();
+
+                        if (inputBoxes[i].Text == "" || inputBoxes[i + 1].Text == "")
+                        {
+                            flag = false;
+                            break;
+                        }
+
+                        //cross off two 0's
+                        inputBoxes[i].Text = "";
+                        inputBoxes[i + 1].Text = "";
+                        //give the correct labels
+                        labelBoxes[i].Text = "Q" + i;
+                        labelBoxes[i + 1].Text = "Q" + (i + 1);
+                        //}
+                    }
+                    if (inputLength() == 0)
+                        flag = true;
+
+                    if (flag)
+                        MetroMessageBox.Show(this, "Correct", "Accepted input", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    else
+                        MetroMessageBox.Show(this, "Reject", "Rejected input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //start problem 3 of if input is a power of 2
+                else if (TMSelect.Text.Equals("2^x", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    
+                    
+                    switch (inputLength())
+                    {
+                        case 1:
+                        case 2:
+                        case 4:
+                        case 8:
+                        case 16:
+                            labelAll();
+                            flag = true;
+                            break;
+                        default:
+                            flag = false;
+                            break;
+                    }
+                    for (int i = 0; i < inputLength(); i++)
+                    {
+                        if (inputBoxes[i].Text != "0")
+                            flag = false;
+                    }
+                    if (flag)
+                        MetroMessageBox.Show(this, "Correct", "Accepted input", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    else
+                        MetroMessageBox.Show(this, "Reject", "Rejected input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private static int inputLength()
         {
-            if (inputBoxes[0].Text == null || inputBoxes[0].Text == "")
-                return 0;
+            int count = 0;
+            //if (inputBoxes[0].Text == null || inputBoxes[0].Text == "")
+            //    return 0;
 
-            for (int i = 1; i < 25; i++)
+            for (int i = 0; i < 25; i++)
             {
                 if (inputBoxes[i].Text == null || inputBoxes[i].Text == "")
-                    return i;
+                    continue;
+                count++;
             }
-            return -1;
+            return count;
 
+        }
+
+        private static void clearLabels()
+        {
+            foreach (TextBox tb in labelBoxes)
+            {
+                tb.Text = "";
+            }
+        }
+        private static void labelAll()
+        {
+            for (int i = 0; i < inputLength(); i++)
+            {
+                labelBoxes[i].Text = "Q" + i;
+            }
+        }
+
+        private void clearForm_Click(object sender, EventArgs e)
+        {
+            clearLabels();
+
+            foreach (TextBox tb in inputBoxes)
+            {
+                tb.Text = "";
+            }
         }
     }
 }
